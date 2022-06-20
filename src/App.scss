@@ -1,0 +1,368 @@
+/*reset*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video, button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+article, aside, details, figcaption, figure, dialog,
+footer, header, hgroup, menu, nav, section, main {
+    display: block;
+}
+
+ul, ul li {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+
+    &:before, &:after {
+        content: none;
+    }
+}
+
+a {
+    text-decoration: none;
+    font-size: 100%;
+    color: inherit;
+}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/**
+ * Paul Irish box sizing reset so all elements have broder-box.
+ */
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    font-family: inherit;
+}
+
+/**
+ * custom smarty resets
+ */
+a {
+    text-decoration: none;
+}
+
+button, input, a, textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input {
+    &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #fff inset !important;
+    }
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+iframe {
+    pointer-events: none;
+}
+
+
+
+body {
+    background: linear-gradient(0.49deg, #66D1E4 3.09%, #5074D1 99.66%) no-repeat center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 24px;
+    color: #fff;
+}
+
+.container {
+    max-width: 1140px;
+    width: 100%;
+    padding: 0 16px;
+    margin: 0 auto;
+}
+
+.App {
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+.asset-1 {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+.asset-2 {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+}
+
+header {
+    padding: 64px 0 48px;
+}
+
+.logo {
+    display: inline-block;
+    max-width: 147px;
+
+    img {
+        width: 100%;
+    }
+}
+
+main {
+    flex: 1;
+
+    .text {
+        margin-top: 34px;
+    }
+}
+
+
+
+
+.gallery {
+    display: flex;
+    padding: 60px 0 60px;
+    margin-left: -24px;
+    flex-wrap: wrap;
+
+    li {
+        width: calc(25% - 24px);
+        margin-left: 24px;
+        margin-bottom: 24px;
+
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+}
+
+footer {
+    min-height: 165px;
+
+    ul {
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+         li {
+
+             &:not(:last-child)  {
+                 margin-right: 24px;
+             }
+         }
+
+
+    }
+}
+
+.btn-wrapper {
+    text-align: center;
+}
+
+.mint-content {
+    display: inline-flex;
+    align-items: center;
+    color: #000;
+    font-family: 'Lato', sans-serif;
+
+}
+.mint-input {
+    line-height: 44px;
+    background-color: #FED800;
+    border-radius: 40px 4px 4px 40px;
+    border: 2px solid #000000;
+    width: 140px;
+    margin-right: 16px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-around;
+
+button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    img {
+        display: block;
+    }
+}
+}
+
+.btn-mint {
+    background-color: #DC8F52;
+
+    border: 2px solid #000000;
+    height: 48px;
+    line-height: 44px;
+    padding: 0 24px;
+    border-radius: 4px 40px 40px 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 20px;
+    transition: .3s;
+
+    &:not([disabled]) {
+        &:hover {
+            background-color: #fff;
+            color: #DC8F52;
+        }
+    }
+
+    &[disabled] {
+        pointer-events: none;
+        background-color: rgba(220, 143, 82, 0.5);
+    }
+}
+
+.warn-text {
+    padding: 24px 0;
+    font-size: 20px;
+}
+
+/*button*/
+
+.btn {
+    cursor: pointer;
+    display: inline-flex;
+    height: 48px;
+    line-height: 44px;
+    padding: 0 24px;
+    border: 2px solid #000000;
+    border-radius: 40px;
+    background-color: #DC8F52;
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    font-size: 20px;transition: .3s;
+
+    &:hover {
+        background-color: #fff;
+        color: #DC8F52;
+    }
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 24px;
+
+    p {
+        margin-right: 20px;
+        font-size: 16px;
+    }
+
+    a {
+        display: block;
+        img {
+            display: block;
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+    header {
+        padding: 40px 0 48px;
+    }
+}
+
+@media (max-width: 991px) {
+    .asset-1 {
+        top: 16px;
+        left: 8px;
+    }
+    .asset-2 {
+        bottom: 120px;
+        right: 24px;
+    }
+
+    header {
+        padding: 32px 0;
+    }
+    .logo {
+        max-width: 96px;
+    }
+
+    .gallery {
+        padding-top: 32px;
+        margin-left: -16px;
+
+        li {
+            width: calc(50% - 16px);
+            margin-left: 16px;
+            margin-bottom: 16px;
+        }
+
+    }
+}
+
+
+@media (max-width: 575px) {
+    .asset-1 {
+        top: 16px;
+        left: -60px;
+    }
+    .asset-2 {
+        bottom: 120px;
+        right: -60px;
+    }
+    footer {
+        padding-bottom: 16px;
+        ul {
+            flex-direction: column;
+
+            li {
+                margin-bottom: 16px;
+                &:not(:last-child) {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+
+        p {
+            margin-right: 0;
+            margin-bottom: 16px;
+        }
+    }
+}
+
