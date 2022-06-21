@@ -134,7 +134,7 @@ const ConnectButton = () => {
                         </div>
 
                         <button
-                            className="btn-mint"
+                            className="btn btn-mint"
                             disabled={disableMint}
                             onClick={e => {
                                 e.preventDefault();
@@ -159,7 +159,7 @@ const ConnectButton = () => {
                             openMobileMetamask();
                         }}
                     >
-                        Connect wallet
+                        Connect
                     </button>
                     {fallback && <p className="warn-text">{fallback}</p>}
                 </>
