@@ -61,10 +61,8 @@ const ConnectButton = () => {
 
     createMerkleTree();
 
-    const isMintActive = await blockchain.smartContract.methods.isMintActive().
-        call();
-    const isRaffleActive = await blockchain.smartContract.methods.isRaffleActive().
-        call();
+    const isMintActive = await blockchain.smartContract.methods.isMintActive().call();
+    const isRaffleActive = await blockchain.smartContract.methods.isRaffleActive().call();
     const mint = isMintActive
         ?
         await blockchain.smartContract.methods.mint(blockchain.account, _amount)
@@ -124,13 +122,11 @@ const ConnectButton = () => {
       dispatch(fetchData(blockchain.account));
       if (blockchain.account) {
 
-        const isMintActive = await blockchain.smartContract.methods.isMintActive().
-            call();
-        const isRaffleActive = await blockchain.smartContract.methods.isRaffleActive().
-            call();
 
-        console.log({isMintActive});
-        console.log({isRaffleActive});
+        setWalletConnected(true);
+        const isMintActive = await blockchain.smartContract.methods.isMintActive().call();
+        const isRaffleActive = await blockchain.smartContract.methods.isRaffleActive().call();
+
         const price = isMintActive
             ?
             await blockchain.smartContract.methods.mintPrice().call() / 10 ** 18
@@ -144,6 +140,7 @@ const ConnectButton = () => {
         setMaxTotalSupply(+maximumMintSupply);
 
         if (isMintActive) {
+          setNotSelected(false)
           setPublicMintActive(true);
           const publicMintMaxMint = await blockchain.smartContract.methods.maximumAllowedTokensPerWallet().
               call();
@@ -155,9 +152,6 @@ const ConnectButton = () => {
         }
 
         if (isRaffleActive) {
-          if (notSelected) {
-            setFallback('Unfortunately you have not been selected to mint.');
-          }
           const raffleMaxMint = await blockchain.smartContract.methods.allowListMaxMint().
               call();
           setMaxMintCount(+raffleMaxMint);
@@ -167,6 +161,36 @@ const ConnectButton = () => {
           setNumberMintWallet(+raffleMintedWallet);
           if(raffleMaxMint === raffleMintedWallet) {
             setDisableMint(true)
+          }
+
+          const root = await blockchain?.smartContract?.methods.getRoot().call();
+          let tree;
+
+          const createMerkleTree = () => {
+            const leaves = addressList.map(v => keccak256(v));
+            tree = new MerkleTree(leaves, keccak256, {sort: true});
+          };
+
+          const getRoot = () => {
+            return tree.getHexRoot();
+          };
+
+
+
+          createMerkleTree();
+          const localRoot = getRoot();
+
+          const account = await blockchain.account;
+
+          //uncomment this for seeing root in console
+          // console.log({root});
+          // console.log({localRoot});
+
+          if (root === localRoot && addressList.includes(account)) {
+            return setNotSelected(false);
+          } else {
+              setNotSelected(true);
+              setFallback('Unfortunately you have not been selected to mint.');
           }
         }
 
@@ -182,37 +206,6 @@ const ConnectButton = () => {
         const getTotalSupply = await blockchain?.smartContract?.methods.getTotalSupply().
             call();
         setTotalSupply(Number(getTotalSupply));
-
-        const root = await blockchain?.smartContract?.methods.getRoot().call();
-        let tree;
-
-        const createMerkleTree = () => {
-          const leaves = addressList.map(v => keccak256(v));
-          tree = new MerkleTree(leaves, keccak256, {sort: true});
-        };
-
-        const getRoot = () => {
-          return tree.getHexRoot();
-        };
-
-        setWalletConnected(true);
-
-
-
-        createMerkleTree();
-        const localRoot = getRoot();
-
-        const account = await blockchain.account;
-
-        //uncomment this for seeing root in console
-
-        console.log({root});
-        console.log({localRoot});
-
-        if (root === localRoot && addressList.includes(account) ||
-            publicMintActive) {
-          return setNotSelected(false);
-        }
 
       }
     }
