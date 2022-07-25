@@ -213,6 +213,11 @@ main {
         border: none;
         cursor: pointer;
 
+        &[disabled] {
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
         img {
             display: block;
         }
@@ -222,6 +227,7 @@ main {
 .btn {
     cursor: pointer;
     display: inline-flex;
+    align-items: center;
     height: 48px;
     line-height: 44px;
     padding: 0 36px;
@@ -234,7 +240,7 @@ main {
 
     &[disabled] {
         pointer-events: none;
-        background-color: rgba(220, 143, 82, 0.5);
+        opacity: 0.5;
     }
 
     &:hover {
@@ -285,6 +291,38 @@ main {
     }
 
 
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-left: 24px;
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid black;
+    border-radius: 50%;
+    animation: ldsRing 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: black transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
 }
 
 @media (max-width: 991px) {
@@ -368,3 +406,11 @@ main {
 
 }
 
+@keyframes ldsRing {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
