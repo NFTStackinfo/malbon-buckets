@@ -129,7 +129,8 @@ const ConnectButton = () => {
         const isRaffleActive = await blockchain.smartContract.methods.isRaffleActive().
             call();
 
-
+        console.log({isMintActive});
+        console.log({isRaffleActive});
         const price = isMintActive
             ?
             await blockchain.smartContract.methods.mintPrice().call() / 10 ** 18
@@ -154,6 +155,9 @@ const ConnectButton = () => {
         }
 
         if (isRaffleActive) {
+          if (notSelected) {
+            setFallback('Unfortunately you have not been selected to mint.');
+          }
           const raffleMaxMint = await blockchain.smartContract.methods.allowListMaxMint().
               call();
           setMaxMintCount(+raffleMaxMint);
@@ -210,10 +214,6 @@ const ConnectButton = () => {
           return setNotSelected(false);
         }
 
-        if (notSelected && !publicMintActive) {
-          setFallback('Unfortunately you have not been selected to mint.');
-        }
-
       }
     }
   }, [
@@ -261,7 +261,7 @@ const ConnectButton = () => {
   };
   return (
       <>
-        {walletConnected && !notSelected && !publicMintActive ? (
+        {walletConnected && !notSelected ? (
 
             <>
               <div className="mint-content">
