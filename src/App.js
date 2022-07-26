@@ -121,6 +121,7 @@ const App = () => {
                         <img src={`assets/gallery/11.png`} alt=""/>
                     </li>
                 </ul>
+                <p className='footer-text'>Developed by <a href="https://nftstack.info" target='_blank' rel='noreferrer'>NFT Stack</a></p>
             </div>
 
         </div>

@@ -291,6 +291,24 @@ main {
     }
 
 
+    .footer-text {
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: hsla(0,0%,100%,.3);
+        font-size: 14px;
+        z-index: 1;
+
+        a {
+            transition: .3s;
+
+            &:hover {
+                color: hsla(0,0%,100%,.8);
+            }
+
+        }
+    }
 }
 
 .lds-ring {
