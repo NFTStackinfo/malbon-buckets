@@ -29,7 +29,7 @@ const App = () => {
                             <img src="assets/wallet.png" alt=""/>
                             <div className='desc-content'>
                                 {/*change price every time*/}
-                                <h3 className="desc-title">0.1 ETH</h3>
+                                <h3 className="desc-title">0.2 ETH</h3>
                                 <p className='desc-text'>Price per NFT</p>
                             </div>
                         </li>
