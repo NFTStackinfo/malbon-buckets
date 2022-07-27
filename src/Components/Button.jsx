@@ -230,7 +230,7 @@ const ConnectButton = () => {
     }
     if (blockchain.errorMsg === metamaskError && !(isIOS || isAndroid)) {
       window.location.replace(
-          'https://metamask.app.link/dapp/frontnine.bucketsclub.com/');
+          'https://metamask.app.link/dapp/mint.bucketsclub.com/');
     }
   }, [blockchain.errorMsg]);
 
@@ -240,7 +240,7 @@ const ConnectButton = () => {
           || blockchain.errorMsg === metamaskError) {
 
         window.location.replace(
-            'https://metamask.app.link/dapp/frontnine.bucketsclub.com/');
+            'https://metamask.app.link/dapp/mint.bucketsclub.com/');
 
       }
     }
