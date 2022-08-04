@@ -21,7 +21,7 @@ const App = () => {
                         <li className='desc-item'>
                             <img src="assets/ether.png" alt=""/>
                             <div className='desc-content'>
-                                <h3 className="desc-title">9,000</h3>
+                                <h3 className="desc-title">3,000</h3>
                                 <p className='desc-text'>NFT membership cards</p>
                             </div>
                         </li>
